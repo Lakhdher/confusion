@@ -6,6 +6,7 @@ import DishDetail from "./DishDetailComponent";
 import { DISHES } from "../shared/dishes";
 import Header from "./Header";
 import Footer from "./Footer";
+import {Switch , Route , Redirect} from 'react-router-dom'; 
 
 class Main extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class Main extends Component {
     return (
       <div>
         <Header />
+
         <Menu
           dishes={this.state.dishes}
           test={(dishId) => this.setSelectedDish(dishId)}
