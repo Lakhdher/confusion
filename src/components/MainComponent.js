@@ -1,10 +1,11 @@
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-vars */
 import { Component } from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
 import Menu from "./MenuComponent";
 import DishDetail from "./DishDetailComponent";
 import { DISHES } from "../shared/dishes";
+import Header from "./Header";
+import Footer from "./Footer";
 
 class Main extends Component {
   constructor(props) {
@@ -19,12 +20,10 @@ class Main extends Component {
   renderDish() {
     if (this.state.SelectedDishId === null) {
       {
-        console.log("feragh");      
         return <div></div>;
       }
     } else {
       {
-        console.log("meebi");
       return (
       <DishDetail
         dish={
@@ -39,16 +38,13 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Ristorante con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
+        <Header />
         <Menu
           dishes={this.state.dishes}
           test={(dishId) => this.setSelectedDish(dishId)}
         />
         {this.renderDish()}
+        <Footer />  
       </div>
     );
   }

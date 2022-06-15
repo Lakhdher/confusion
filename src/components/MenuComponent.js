@@ -1,25 +1,23 @@
 /* eslint-disable no-useless-constructor */
 /* eslint-disable no-unused-vars */
-import React, { Component } from "react";
+import React from "react";
 import { Card, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
 
-class Menu extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  
-
-  render() {
-    const menu = this.props.dishes.map((dish) => {
-      return (
-        <div key={dish.id} className="col-12 col-md-5 m-1" >
-          <Card onClick={() => {this.props.test(dish.id)}}>
+function MenuItem({dish , test})
+  {
+    return(<Card onClick={() => {test(dish.id)}}>
             <CardImg width="100%" src={dish.image} alt={dish.name} />
             <CardImgOverlay body className="ml-5">
               <CardTitle heading>{dish.name}</CardTitle>
             </CardImgOverlay>
-          </Card>
+          </Card>)
+  }
+
+function Menu(props) {
+    const menu = props.dishes.map((dish) => {
+      return (
+        <div key={dish.id} className="col-12 col-md-5 m-1" >
+          <MenuItem dish={dish} test={props.test} />
         </div>
       );
     });
@@ -28,7 +26,7 @@ class Menu extends Component {
         <div className="row">{menu}</div>
       </div>
     );
-  }
+
 }
 
 export default Menu;
