@@ -108,8 +108,8 @@ class Header extends Component {
         </Jumbotron>
         <Modal
           isOpen={this.state.isModalOpen}
-          toggle={this.toggleModal}
-          color="primary"
+          toggle={this.toggleModal} 
+     
         >
           <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
           <ModalBody>
