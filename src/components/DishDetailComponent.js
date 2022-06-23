@@ -20,12 +20,13 @@ import { Component } from "react";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { Row, Label } from "reactstrap";
 import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
 
 function RenderDish({ dish }) {
   if (dish !== null)
     return (
       <Card>
-        <CardImg width="100%" src={dish.image} alt={dish.name} />
+        <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
         <CardBody>
           <CardTitle heading>{dish.name}</CardTitle>
           <CardText>{dish.description}</CardText>
@@ -50,7 +51,7 @@ class CommentForm extends Component {
 
   handleSubmit = (values) => {
     this.toggleModal();
-    this.props.addComment(
+    this.props.postComment(
       this.props.dishId,
       values.rating,
       values.author,
@@ -214,7 +215,10 @@ function DishDetail(props) {
           </div>
           <div className="col-12 col-md-5 m-1">
             <RenderComments comments={props.comments} />{" "}
-            <CommentForm addComment={props.addComment} dishId={props.dish.id} />
+            <CommentForm
+              postComment={props.postComment}
+              dishId={props.dish.id}
+            />
           </div>
         </div>
       </div>
